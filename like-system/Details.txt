@@ -1,0 +1,46 @@
+1.Requirements of a Like system.
+
+Rules of 'Likes':
+
+- Each user can like a specific post a single time
+- A user shoudl be able to 'unlike' a post.
+- Need to be able to figure out how many users like a post.
+- Neet to be able to list which users like a post.
+- Comments also can be liked.
+- We might want to think about 'dislikes' or other kinds of reactions.
+
+Tircs to avoid:
+
+- Don't add a 'Likes' Column to Posts. As:
+  - No way to make sure a user likes a post only once.
+  - No way to make sure a user can only 'unlike' a post they have liked.
+  - No way to figure out which users like a particualr post.
+  - No way to remove a like if a user gets deleted :)
+
+Trics to do:
+
+- Add a unique constraint with UNIQUE(user_id, post_id).
+- Record the type of reaction [like , love, care, funny , sad]
+- Add like_type to likes table
+- A like can be a 'post like' or a 'comment like'
+- Referred to as a 'polymorphic association.
+- Requires your app to figure out the meaning of each like.
+- Can't use foreight key columns - 'liked_id' is a plain integer
+
+
+-------------------------------------------------------------------
+There are many alternatives.
+
+Simples one:
+Our Tables:
+
+users
+Posts
+Comments
+posts_likes
+comments_likes
+
+// Still want to write queries that will count up all likes?
+We can use a Union or a View :)
+
+Best :)
